@@ -25,10 +25,10 @@ BlogPost.init(
       defaultValue: DataTypes.NOW,
     },
     user_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'name',
+        key: 'id',
       },
     },
   },

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User, BlogPost } = require('../models');
+const { User, BlogPost } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -10,12 +10,11 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const posts = blogPostData.map((post) => post.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
-    // res.render('homepage', { 
-    //   posts, 
-    //   logged_in: true
-    // });
-    res.json(posts);
+    res.render('homepage', { 
+      posts, 
+      logged_in: true
+    });
+    // res.json(posts);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -31,20 +30,38 @@ router.get('/blogpost/:id', async (req, res) => {
 
     const blog = blogData.get({ plain: true });
 
-    // res.render('blogpost', {
-    //   ...blog,
-    //   logged_in: req.session.logged_in
-    // });
-    res.json(blog);
+    res.render('blogpost', {
+      ...blog,
+      logged_in: req.session.logged_in
+    });
+    // res.json(blog);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Use withAuth middleware to prevent access to route
+// How can I just get user's posts?
+router.get('/dashboard', async (req, res) => {
+  try {
+    
+    const blogPostData = await BlogPost.findAll();
+
+    const posts = blogPostData.map((post) => post.get({ plain: true }));
+
+    res.render('dashboard', { 
+      posts, 
+      logged_in: true
+    });
+    // res.json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 router.post('/login', async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
+   
     const userData = await User.findOne({where: {email: req.body.email } });
      if(!userData) {
       res
@@ -62,10 +79,10 @@ router.post('/login', async (req, res) => {
         return;
     }
 
-    // res.render('profile', {
-    //   ...user,
-    //   logged_in: true
-    // });
+    res.render('dashboard', {
+      ...user,
+      logged_in: true
+    });
     res.json(user);
   } catch (err) {
     res.status(500).json(err);
