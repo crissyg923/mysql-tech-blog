@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, BlogPost } = require('../models');
+const { User, BlogPost, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -7,14 +7,14 @@ router.get('/', async (req, res) => {
     // Get all projects and JOIN with user data
     const blogPostData = await BlogPost.findAll();
 
-    // Serialize data so the template can read it
+    
     const posts = blogPostData.map((post) => post.get({ plain: true }));
 
     res.render('homepage', { 
       posts, 
-      logged_in: true
+      logged_in: req.session.logged_in
     });
-    // res.json(posts);
+    // res.json(blogPostData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -22,7 +22,16 @@ router.get('/', async (req, res) => {
 
 router.get('/blogpost/:id', async (req, res) => {
   try {
-    const blogData = await BlogPost.findByPk(req.params.id);
+    const blogData = await BlogPost.findByPk(req.params.id, {
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User]
+          
+        }
+      ]
+    });
     if(!blogData) {
       res.status(404).json({message: 'No post with that id.'});
       return;
@@ -32,7 +41,7 @@ router.get('/blogpost/:id', async (req, res) => {
 
     res.render('blogpost', {
       ...blog,
-      logged_in: req.session.logged_in
+      logged_in: true
     });
     // res.json(blog);
   } catch (err) {
@@ -41,7 +50,7 @@ router.get('/blogpost/:id', async (req, res) => {
 });
 
 // How can I just get user's posts?
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     
     const blogPostData = await BlogPost.findAll();
@@ -50,7 +59,7 @@ router.get('/dashboard', async (req, res) => {
 
     res.render('dashboard', { 
       posts, 
-      logged_in: true
+      logged_in: req.session.logged_in
     });
     // res.json(posts);
   } catch (err) {
@@ -59,35 +68,37 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
-router.post('/login', async (req, res) => {
-  try {
+// router.post('/login', async (req, res) => {
+//   try {
    
-    const userData = await User.findOne({where: {email: req.body.email } });
-     if(!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password!'})
-      return;
-     }
-    const user = userData.get({ plain: true });
-    const vaildPassword = await userData.checkPassword(req.body.password);
+//     const userData = await User.findOne({where: {email: req.body.email } });
+//      if(!userData) {
+//       res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password!'})
+//       return;
+//      }
+//     const user = userData.get({ plain: true });
+//     const vaildPassword = await userData.checkPassword(req.body.password);
 
-    if (!vaildPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password!'});
-        return;
-    }
+//     if (!vaildPassword) {
+//       res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password!'});
+//         return;
+//     }
 
-    res.render('dashboard', {
-      ...user,
-      logged_in: true
-    });
-    res.json(user);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('dashboard', {
+//       ...user,
+//       logged_in: true
+//     });
+//     res.json(user);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
