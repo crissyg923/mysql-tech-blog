@@ -1,13 +1,13 @@
-<!-- Loop over each object in the projects array -->
-<h1>Current Blog Posts</h1>
-<div class="row">
+<h1 class="text-center mt-4 mb-3">Current Blog Posts</h1>
+<div class="row mx-5">
 {{#each posts as |post| }}
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"> {{ post.title }} </h5>
     
     <p class="card-text"> {{ post.body }} </p>
-    <a href="#" class="card-link">View More</a>
+    <p class="card-text"> Post by {{ user.name }} </p>
+    <a href="/blogpost/{{ post.id }}" class="card-link">View Post</a>
   </div>
 </div>
 {{/each}}
