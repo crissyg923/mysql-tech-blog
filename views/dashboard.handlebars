@@ -1,4 +1,4 @@
-<h1>Welcome to your Dashboard</h1>
+<h1>Welcome to your Dashboard, {{name}}</h1>
 
 <form class="newpost">
   <div class="form-group">
@@ -11,4 +11,23 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-</div>
+
+  {{!-- {{#if posts.length}} --}}
+  <div class="col-md-6 project-list">
+    <h3>My Posts:</h3>
+
+    {{#each BlogPosts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/blogpost/{{post.id}}">{{post.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{!-- {{/if}} --}}
+
+
+<script src="./js/dashboard.js"></script>

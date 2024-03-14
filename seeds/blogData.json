@@ -2,16 +2,16 @@
   {
     "title": "HTML Layout",
     "body": "In an effort to pass along knowledge, I have come across some great tips for creating HTML layouts",
-    "user_name": 1
+    "user_id": 1
   },
   {
     "title": "API Fetches",
     "body": "Does an API fetch like a dog?",
-    "user_name": 2  
+    "user_id": 2  
   },
   {
     "title": "Github Gang",
     "body": "After exhausting all avenues to find an alternative to Github, I guess I'm github gang for life.",
-    "user_name": 3  
+    "user_id": 3  
   }
 ]
