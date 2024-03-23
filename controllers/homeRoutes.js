@@ -4,7 +4,30 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    const blogPostData = await BlogPost.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    
+    const allposts = blogPostData.map((post) => post.get({ plain: true }));
+    const posts = allposts.slice(-4);
+    res.render('homepage', { 
+      posts, 
+      logged_in: req.session.logged_in
+    });
+    // res.json(blogPostData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.get('/allposts', async (req, res) => {
+  try {
+    
     const blogPostData = await BlogPost.findAll({
       include: [
         {
@@ -16,12 +39,10 @@ router.get('/', async (req, res) => {
 
     
     const posts = blogPostData.map((post) => post.get({ plain: true }));
-
-    res.render('homepage', { 
+    res.render('allposts', { 
       posts, 
       logged_in: req.session.logged_in
     });
-    // res.json(blogPostData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -76,38 +97,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-// router.post('/login', async (req, res) => {
-//   try {
-   
-//     const userData = await User.findOne({where: {email: req.body.email } });
-//      if(!userData) {
-//       res
-//         .status(400)
-//         .json({ message: 'Incorrect email or password!'})
-//       return;
-//      }
-//     const user = userData.get({ plain: true });
-//     const vaildPassword = await userData.checkPassword(req.body.password);
-
-//     if (!vaildPassword) {
-//       res
-//         .status(400)
-//         .json({ message: 'Incorrect email or password!'});
-//         return;
-//     }
-
-//     res.render('dashboard', {
-//       ...user,
-//       logged_in: true
-//     });
-//     res.json(user);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 
 
 router.get('/login', (req, res) => {
