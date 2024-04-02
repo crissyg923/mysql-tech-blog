@@ -1,21 +1,23 @@
-<div>
-  <h1> {{ title }} by {{ user.name }}</h1>
+<div class="d-flex justify-content-center mt-2">
+<div class="card bg-dark m-2 cardstyle " style="width: 70%;">
+  <div class="card-body">
+    <h4 class="card-title"> {{ title }}</h4>
+    <p class="card-text"> Post by {{ user.name }} on {{ format_date createdAt }} </p>
+    
+    <h5 class="card-text"> {{ body }} </h5>
+    {{!-- <p class="card-text"> Post by {{ user.name }} </p> --}}
+   </div>
+  </div>
 </div>
-<h4>
-  {{ body }}
-</h4>
-<p>
-  {{ format_date createdAt }}
-
-</p>
+</div>
 
 {{#if logged_in}}
 <div class="p-2>">
-  <form class="newcomment">
-  <div class="form-group">
+  <form class="newcommentform">
+  {{!-- <div class="form-group">
     <label for="exampleFormControlInput1">Name</label>
     <input type="text" class="form-control" id="commentname" placeholder="Enter name">
-  </div>
+  </div> --}}
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Comment:</label>
     <textarea class="form-control" id="commenttext" rows="3"></textarea>
@@ -27,18 +29,18 @@
 <div class="p-2">
 {{/if}}
 
-<h2>Comments:</h2>
+{{!-- <h2>Comments:</h2> --}}
 
-{{#if blog.Comments }} 
+{{#if blog.Comment }} 
 <h3>Comments</h3>
-{{#each blog.Comments}}
+{{#each blog.Comment}}
 <p>
-  {{body}}
+  {{Comment.body}}
 </p>
 {{/each}}
 {{/if}}
 </div>
 
-<script src="./js/login.js"></script>
+<script src="/js/comment.js"></script>
 
 
