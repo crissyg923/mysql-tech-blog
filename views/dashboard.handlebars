@@ -1,31 +1,37 @@
-<h1>Welcome to your Dashboard, {{name}}</h1>
+<h1 class="text-center mt-4">Welcome to your Dashboard, {{name}}</h1>
 
 <form class="newpost">
   <div class="form-group">
     <label for="exampleFormControlInput1">Title</label>
-    <input type="text" class="form-control" id="blogtitle" placeholder="Enter name">
+    <input type="text" class="form-control bg-dark text-white" id="blogtitle" placeholder="Enter name">
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="form-control" id="blogbody" rows="3"></textarea>
+    <textarea class="form-control bg-dark text-white" id="blogbody" rows="3"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-  {{!-- {{#if posts.length}} --}}
-  <div class="col-md-6 project-list">
-    <h3>My Posts:</h3>
+  {{!-- {{#if Blogposts.length}} --}}
+
+<h2 class="text-center mt-4 mb-3 recentposts">My  Posts</h2>
+<div class="d-flex justify-content-center mx-5">
+
 
     {{#each BlogPosts as |post|}}
+    <div class="card bg-dark m-2 cardstyle p-3">
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/blogpost/{{post.id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+       <a href="/dashboard/{{post.id}}"><button class="btn formbutton" data-id="{{post.id}}">Edit</button></a> 
+        <button class="btn formbutton" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
+    </div>
     {{/each}}
+  
   </div>
   {{!-- {{/if}} --}}
 

@@ -100,6 +100,35 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/dashboard/:id', withAuth, async (req, res) => {
+  try {
+    const userPost = await BlogPost.findByPk(req.params.id, {
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User]
+          
+        }
+      ]
+    });
+    if(!userPost) {
+      res.status(404).json({message: 'No post with that id.'});
+      return;
+    }
+
+    const post = userPost.get({ plain: true });
+    console.log(post);
+    res.render('editpost', {
+      post: post,
+      logged_in: true
+    });
+    console.log(post);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
