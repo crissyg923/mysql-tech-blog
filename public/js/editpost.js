@@ -1,11 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Assuming postTitle and postBody are defined somewhere in your script
-    var postTitle = "Your dynamic title";
-    var postBody = "Your dynamic body content";
 
-    // Set the value of the input field
     document.querySelector('input[name="postTitle"]').value = postTitle;
 
-    // Set the value of the textarea
+    
     document.getElementById('postbody').value = postBody;
 });
+
+const editPostHandler = async(event) => {
+  console.log('Form submitted');
+  event.preventDefault();
+  const title = document.querySelector('input[name="postTitle"]').value.trim();
+  const body = document.querySelector('textarea[name="post-body"]').value.trim();
+  const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+      ];
+ 
+  if (title && body && id) {
+     try {
+       const response = await fetch(`/api/posts/${id}`, {
+         method: 'PUT',
+         body: JSON.stringify({
+           title,
+           body
+         }),
+         headers: {
+           'Content-Type': 'application/json',
+         },
+       });
+ 
+       if (response.ok) {
+         document.location.reload();
+       } else {
+         alert('Failed to edit post');
+       }
+     } catch (error) {
+       console.error('Error:', error);
+     }
+  }
+ }
+ 
+  
+  document
+  .querySelector('.editpost')
+  .addEventListener('submit', editPostHandler);
+  
