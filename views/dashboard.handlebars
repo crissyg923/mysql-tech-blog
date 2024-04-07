@@ -15,7 +15,7 @@
   {{!-- {{#if Blogposts.length}} --}}
 
 <h2 class="text-center mt-4 mb-3 recentposts">My  Posts</h2>
-<div class="d-flex justify-content-center mx-5">
+<div class="d-flex justify-content-center myposts mx-5">
 
 
     {{#each BlogPosts as |post|}}
@@ -25,8 +25,8 @@
         <h4><a href="/blogpost/{{post.id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-4">
-       <a href="/dashboard/{{post.id}}"><button class="btn formbutton" data-id="{{post.id}}">Edit</button></a> 
-        <button class="btn formbutton" data-id="{{post.id}}">DELETE</button>
+       <a href="/dashboard/{{post.id}}"><button class="btn formbutton">Edit</button></a> 
+        <button class="btn formbutton deletebutton m-1" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
     </div>
