@@ -12,31 +12,35 @@
 </div>
 
 {{!-- {{#if logged_in}} --}}
-<div class="p-2>">
+<div class="d-flex justify-content-center m-2">
+  <div class="card bg-dark m-2 cardstyle pt-2 " style="width: 70%;">
   <form class="newcommentform">
-  <div class="form-group">
+  <div class="form-group p-2">
       <input type="hidden" name="postId" value="{{id}}" />
-    <label for="exampleFormControlTextarea1">Comment:</label>
-    <textarea class="form-control" name="comment-body" id="commenttext" rows="3"></textarea>
+    <label for="exampleFormControlTextarea1">Add a Comment:</label>
+    <textarea class="form-control  bg-dark text-white" name="comment-body" id="commenttext" rows="3"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="text-center p-2">
+  <button type="submit" class="btn formbutton">Submit</button>
+  </div>
 </form>
 </div>
-<div class="p-2">
-{{!-- {{/if}} --}}
+</div>
 
-<h2>Comments:</h2>
-<div>
+{{!-- {{/if}} --}}
+<div class="p-3 comments">
 {{#if Comments }} 
-<h3>Comments</h3>
+<h3 class="commentline">Comments</h3>
 {{#each Comments as |comment| }}
-<p>
+<p class="ml-4 singlecomment">
   {{comment.body}}
-  {{comment.user}}
+  {{comment.user.name}} on
+  <span class="font-italic">{{ format_date comment.createdAt}}</span>
   </p>
   {{/each}}
 {{/if}}
 </div>
+
 
 <script src="/js/comment.js"></script>
 

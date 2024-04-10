@@ -1,17 +1,22 @@
 <h1 class="text-center mt-4">Welcome to your Dashboard, {{name}}</h1>
 
+<div class="d-flex align-items-center flex-column">
+<div class="card bg-dark m-2 p-3 cardstyle" style="width: 75%">
 <form class="newpost">
-  <div class="form-group">
+  <div class="form-group p-2">
     <label for="exampleFormControlInput1">Title</label>
-    <input type="text" class="form-control bg-dark text-white" id="blogtitle" placeholder="Enter name">
+    <input type="text" class="form-control bg-dark text-white" id="blogtitle" placeholder="Enter title">
   </div>
-  <div class="form-group">
+  <div class="form-group p-2">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="form-control bg-dark text-white" id="blogbody" rows="3"></textarea>
+    <textarea class="form-control bg-dark text-white" id="blogbody" rows="3" placeholder="Enter body"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="text-center pt-2">
+  <button type="submit" class="btn formbutton">Submit</button>
+  </div>
 </form>
-
+</div>
+</div>
   {{!-- {{#if Blogposts.length}} --}}
 
 <h2 class="text-center mt-4 mb-3 recentposts">My  Posts</h2>
