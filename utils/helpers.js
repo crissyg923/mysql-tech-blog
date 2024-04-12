@@ -7,6 +7,11 @@ module.exports = {
     // format large numbers with commas
     return parseInt(amount).toLocaleString();
   },
+  limit_char: (str) => {
+    const maxLength = 50; // Define the maximum number of characters you want to display
+    const truncated = str.slice(0, maxLength);
+    return truncated;
+  },
   get_emoji: () => {
     const randomNum = Math.random();
 
