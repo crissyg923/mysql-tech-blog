@@ -5,13 +5,12 @@
     <p class="card-text"> Post by {{ user.name }} on {{ format_date createdAt }} {{post.id}}</p>
     
     <h5 class="card-text"> {{ body }} </h5>
-    {{!-- <p class="card-text"> Post by {{ user.name }} </p> --}}
    </div>
   </div>
 </div>
 </div>
 
-{{!-- {{#if logged_in}} --}}
+{{#if logged_in}}
 <div class="d-flex justify-content-center m-2">
   <div class="card bg-dark m-2 cardstyle pt-2 " style="width: 70%;">
   <form class="newcommentform">
@@ -27,7 +26,8 @@
 </div>
 </div>
 
-{{!-- {{/if}} --}}
+{{/if}}
+
 <div class="p-3 comments">
 {{#if Comments }} 
 <h3 class="commentline">Comments</h3>

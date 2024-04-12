@@ -45,26 +45,7 @@ router.put('/:id', async (req, res) => {
   }
  });
 
-//  router.delete('/:id', withAuth, async (req, res) => {
-//   try {
-//     const [affectedRows] = BlogPost.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
-//     console.log([affectedRows]);
-//     console.log(req.session.user_id)
-//     if (affectedRows > 0) {
-//       res.status(200).end();
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-    
-//   }
-// });
+
 
 router.delete('/:id', async (req, res) => {
   try {

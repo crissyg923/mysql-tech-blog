@@ -13,7 +13,21 @@ body {
 header, .project:not(:last-child) {
   border-bottom: 3px solid var(--green);
 }
+/* .alignbottom{
+  position: inherit;
+  bottom: 0;
+} */
 
+.card-body {
+  position: relative;
+}
+
+.alignbottom {
+  position: absolute;
+  bottom: 0;
+  /* left: 50%; 
+  transform: translateX(-50%); */
+}
 .allposts {
   color: inherit;
   text-decoration: none;
@@ -44,7 +58,13 @@ header, .project:not(:last-child) {
   justify-content: center;
   padding-top: 5%; 
 }
-
+.dashcard {
+  text-decoration: none;
+  color: white;
+}
+.datefont{
+  font-style: italic;
+}
 .formbutton {
   background-color: var(--green);
   margin-top: 3%;
@@ -69,26 +89,26 @@ header, .project:not(:last-child) {
 .recentposts {
   font-family: "Orbitron", sans-serif;
 }
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
-}
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
+.postbutton{
+  background-color: var(--green);
+  margin-top: 3%;
 }
-
+.postcard {
+  border: solid var(--green) 5px;
+}
 .postlink {
 text-decoration: underline var(--green);
 color: inherit;
 }
-
+.postlinkdash {
+  text-decoration: underline var(--green);
+  color: inherit;
+}
+.postlinkdash:hover {
+ font-size: 20px;
+ color: white;
+}
 .postlink:hover {
   color: var(--green);
   font-size: 20px;
