@@ -1,17 +1,17 @@
 [
   {
     "title": "HTML Layout",
-    "body": "In an effort to pass along knowledge, I have come across some great tips for creating HTML layouts",
+    "body": "In an effort to pass along knowledge, I have come across some great tips for creating HTML layouts.  First, you should start by wireframing your design.",
     "user_id": 1
   },
   {
     "title": "API Fetches",
-    "body": "Does an API fetch like a dog?",
+    "body": "What is your go-to mthod for fetching an API? I personally love Axios and here's why: It supports all HTTP methods!",
     "user_id": 2  
   },
   {
     "title": "Github Gang",
-    "body": "After exhausting all avenues to find an alternative to Github, I guess I'm github gang for life.",
+    "body": "I just wanted to write this post to give GitHub its flowers.  I mean serious fellos Devs, what would we do without it?!",
     "user_id": 3  
   }
 ]
