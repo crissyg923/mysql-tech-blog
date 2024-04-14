@@ -9,7 +9,7 @@
   <div class="card-body">
     <h4 class="card-title posttitle"> {{ post.title }}</h4>
     <p class="card-text"> {{ limit_char post.body }}...</p>
-    <p class="card-text"> Post by {{ user.name }} </p>
+    <p class="card-text"> Post by {{ user.name }} on <span class="datefont">{{ format_date post.createdAt}}</span> </p>
     <div class="text-center">
    <h6 class="alignbottom"><a href="/blogpost/{{ post.id }}" class="card-link postlink">View Post</a></h6>
    </div>
