@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4">Welcome to your Dashboard, {{name}}</h1>
 
-<div class="d-flex align-items-center flex-column">
+<div class="d-flex justify-content-center">
 <div class="card bg-dark m-2 p-3 cardstyle" style="width: 75%">
 <form class="newpost">
   <div class="form-group p-2">
@@ -18,13 +18,14 @@
 </div>
 </div>
 
-<h2 class="text-center mt-4 mb-3 recentposts">My  Posts</h2>
-<div class="d-flex justify-content-center myposts mx-5">
+<h2 class="text-center recentposts mt-2">My  Posts</h2>
+<div class="container">
+  <div class="row">
+<div class="d-flex flex-wrap justify-content-center myposts">
 
 
     {{#each BlogPosts as |post|}}
-    <div class="d-flex justify-content-center mx-5">
-    <div class="card bg-dark m-2 cardstyle" style="width: 18rem;">
+    <div class="card bg-dark m-2 cardstyle col-sm-12 col-md-8 col-lg-4" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title posttitle"> {{ post.title }}</h4>
     <p class="card-text mb-3"> {{ limit_char post.body }}...</p>
@@ -32,17 +33,16 @@
     <div class="d-flex justify-content-center">
    
   <button class="btn formbutton m-2 "><a href="/dashboard/{{ post.id }}" class="card-link postlinkdash">View/Edit</a></button>  
-   <button class="btn formbutton m-2" data-id="{{post.id}}">DELETE</button>
+   <button class="btn formbutton m-2 delete" data-id="{{post.id}}">DELETE</button>
   
   </div>
 </div>
 </div>
-</div>
-  </div>
+  
     {{/each}}
-  
-
-
+</div>  
+</div>
+</div>
 
 
 <script src="./js/dashboard.js"></script>

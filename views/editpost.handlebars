@@ -12,19 +12,23 @@
 </div>
 </div>
 
-<div class="p-2">
+<div class="d-flex justify-content-center mt-2">
+<div class="card bg-dark m-2 p-3 postcard" style="width: 70%;">
   <form class="editpost">
-    <div class="form-group">
+    <div class="form-group p-2">
       <input type="hidden" name="postId" value="{{id}}" />
       <label for="exampleFormControlInput1">Title</label>
-      <input type="text" name="postTitle" id="posttitle" value="{{post.title}}" />
+      <input type="text" class="form-control bg-dark text-white" name="postTitle" id="posttitle" value="{{post.title}}" />
     </div>
-    <div class="form-group">
+    <div class="form-group p-2">
       <label for="exampleFormControlTextarea1">Body:</label>
-      <textarea class="form-control" name="post-body" id="postbody" rows="3">{{post.body}}</textarea>
+      <textarea class="form-control bg-dark text-white" name="post-body" id="postbody" rows="3">{{post.body}}</textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="text-center pt-2">
+    <button type="submit" class="btn formbutton">Submit</button>
+    </div>
   </form>
+</div>
 </div>
 
 <script>
