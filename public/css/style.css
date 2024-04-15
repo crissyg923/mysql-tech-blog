@@ -161,7 +161,14 @@ color: inherit;
     flex-direction: column;
     width: 100%;
   }
+  .recentpostcards{
+    display: flex;
+    flex-direction: column;
+  }
   .singleitem {
     width: 100%;
+  }
+  .sitebanner {
+    max-width: 100%;
   }
   }
