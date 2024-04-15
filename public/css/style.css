@@ -164,6 +164,7 @@ color: inherit;
   .recentpostcards{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .singleitem {
     width: 100%;
