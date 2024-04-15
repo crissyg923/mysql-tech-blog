@@ -4,9 +4,9 @@
 [Deployed Site](https://rocky-depths-34530-478c76eea61a.herokuapp.com/)
 
 ## Description
-This project is the most important to me of all of the bootcamp assignments as it encompasses a great deal of what I have learned in the past 6 months.  Making it through this bootcamp has been a true accomplishment and this portfolio shows that the proof is in the pudding!
+CMS-style tech blog built with MySql using MVC design for tech-connoisseurs to congregate and share their thoughts.  This blog allows you to create an account, make posts, comment, and delete posts while logged in.  Visitors can view posts, but must make an account to do anything else.
 
-![Site Image](./src/images/siteimage.png)
+![Site Image](./public/images/siteimage.png)
 
 ## Table of Contents
 
@@ -14,23 +14,32 @@ This project is the most important to me of all of the bootcamp assignments as i
 2. [Usage](#usage)
 3. [Credits](#credits)
 4. [How to Contribute](#how-to-contribute)
-5. [Tests](#tests)
-6. [Questions](#questions)
+5. [Questions](#questions)
 
 ## Installation
-This code can be cloned via the github repo.  
+This application can be cloned at the [github repo](https://github.com/crissyg923/mysql-tech-blog).
 
 ## Usage
-Feel free to use this code as inspiration for your own portfolio or as a starting point.
+Head to the [deployed site](https://rocky-depths-34530-478c76eea61a.herokuapp.com/) and create an account or download the [github repo](https://github.com/crissyg923/mysql-tech-blog) to run it locally.  If running locally, be sure to complete the following steps:
+
+1. Download and install MySQL in your local environment from the [community downloads page](https://dev.mysql.com/downloads/mysql/).
+
+2. Run the package dependencies using the command **npm i**.
+
+3. In your terminal, run the schema by first logging in to MySQL.  You can do this by running the command **msql -u root -p**.  It will ask for a password and then you will  type the command **Source db/schema.sql**.  This will build the framework for you local database.
+
+4. Type exit to come out of the MySql shell.  Now, you will run the command **npm run seeds/seed.js** to seed your local database with the placeholder accounts and posts.  
+
+5.  Run the command **npm start** to spin up your local server and start to use the site locally.  The local version of the site can be found at [http://localhost:3001](http://localhost:3001).
+
+
 
 ## Credits
-Rutgers tutors and class activities were utilized in the creation of this portfolio.
+MySql and handlebars documentation were heavily referenced during the creation of this application.
 
 ## How to Contribute
-N/A
+Contributions can be made in the form of site upgrades such as adding images to users on database to allow them to have profile pictures, adding private user-to-user messaging, and even a live chat feature.  Feel free to clone the repo, start a feature branch, and push upgrades for review and approval.
 
-## Tests
-N/A
 
 ## License
 MIT License
@@ -58,6 +67,6 @@ Crystal Green
 
 (862) 205-9019
 
-crissybrown1992@icloud.com
+cgreen.developer@gmail.com
 
 [Github](https://github.com/crissyg923)
