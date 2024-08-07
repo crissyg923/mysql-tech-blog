@@ -1,7 +1,8 @@
 # react-portfolio
 ![Static Badge](https://img.shields.io/badge/License-MIT-green)
 
-[Deployed Site](https://rocky-depths-34530-478c76eea61a.herokuapp.com/)
+[Deployed Site](https://cryptic-wave-31657-94a8bd652762.herokuapp.com/)
+[Github Repo](https://github.com/crissyg923/mysql-tech-blog)
 
 ## Description
 CMS-style tech blog built with MySql using MVC design for tech-connoisseurs to congregate and share their thoughts.  This blog allows you to create an account, make posts, comment, and delete posts while logged in.  Visitors can view posts, but must make an account to do anything else.
@@ -20,7 +21,7 @@ CMS-style tech blog built with MySql using MVC design for tech-connoisseurs to c
 This application can be cloned at the [github repo](https://github.com/crissyg923/mysql-tech-blog).
 
 ## Usage
-Head to the [deployed site](https://rocky-depths-34530-478c76eea61a.herokuapp.com/) and create an account or download the [github repo](https://github.com/crissyg923/mysql-tech-blog) to run it locally.  If running locally, be sure to complete the following steps:
+Head to the [deployed site](https://cryptic-wave-31657-94a8bd652762.herokuapp.com/) and create an account or download the [github repo](https://github.com/crissyg923/mysql-tech-blog) to run it locally.  If running locally, be sure to complete the following steps:
 
 1. Download and install MySQL in your local environment from the [community downloads page](https://dev.mysql.com/downloads/mysql/).
 
